@@ -41,7 +41,17 @@ dependencies:
   flutter_mjpeg: ^2.0.4
   web_socket_channel: ^2.4.0
   firebase_ui_auth: ^1.7.0
+  flutter_native_splash: ^2.4.0
+  google_sign_in: ^6.2.1
 
+
+flutter_native_splash:
+  color: "#ffffff"
+  image: assets/logo.png
+  android_12:
+    image: assets/logo.png
+
+  # branding: assets/branding.png
 
 dev_dependencies:
   flutter_test:

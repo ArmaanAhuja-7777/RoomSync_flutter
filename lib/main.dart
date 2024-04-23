@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:room_automation/LoginScreen.dart';
 import 'firebase_options.dart';
 import 'package:flutter_mjpeg/flutter_mjpeg.dart';
 import 'package:web_socket_channel/io.dart';
@@ -28,9 +29,10 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: MyHomePage(
-        title: 'Room sync app',
-      ),
+      home: LoginScreen(),
+      // MyHomePage(
+      //   title: 'Room sync app',
+      // ),
     );
   }
 }
