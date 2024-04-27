@@ -25,6 +25,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       UserProfile profile = await _firestoreService.getUserProfile();
       setState(() {
         _profile = profile;
+        print(_profile.toJson());
       });
     } catch (e) {
       setState(() {
@@ -34,6 +35,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }
 
   _saveProfile() async {
+    FocusScope.of(context).unfocus();
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
 
@@ -53,9 +55,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Profile'),
-      ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Form(
@@ -68,7 +67,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   style: TextStyle(color: Colors.red),
                 ),
               TextFormField(
-                initialValue: _profile.name,
+                controller: TextEditingController(text: _profile.name),
                 decoration: InputDecoration(labelText: 'Name'),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
@@ -79,7 +78,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 onSaved: (value) => _profile.name = value!,
               ),
               TextFormField(
-                initialValue: _profile.detail,
+                controller: TextEditingController(text: _profile.detail),
+                // initialValue: _profile.detail,
                 decoration: InputDecoration(labelText: 'Details'),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
@@ -88,6 +88,29 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   return null;
                 },
                 onSaved: (value) => _profile.detail = value!,
+              ),
+              TextFormField(
+                controller: TextEditingController(text: _profile.room_no),
+                // initialValue: _profile.room_no,
+                decoration: InputDecoration(labelText: 'Room No.'),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Room No. is required';
+                  }
+                  return null;
+                },
+                onSaved: (value) => _profile.room_no = value!,
+              ),
+              TextFormField(
+                controller: TextEditingController(text: _profile.roll),
+                decoration: InputDecoration(labelText: 'Roll No.'),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Roll No. is required';
+                  }
+                  return null;
+                },
+                onSaved: (value) => _profile.roll = value!,
               ),
               Row(
                 children: [

@@ -5,8 +5,15 @@ part 'models.g.dart';
 class UserProfile {
   String name;
   String detail;
+  String room_no;
+  String roll;
   bool isFaculty;
-  UserProfile({this.name = '', this.detail = '', this.isFaculty = false});
+  UserProfile(
+      {this.name = '',
+      this.detail = '',
+      this.isFaculty = false,
+      this.roll = '',
+      this.room_no = ''});
   factory UserProfile.fromJson(Map<String, dynamic> json) =>
       _$UserProfileFromJson(json);
   Map<String, dynamic> toJson() => _$UserProfileToJson(this);

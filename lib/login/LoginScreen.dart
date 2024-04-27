@@ -39,11 +39,15 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Container(
-                        width: width / 3,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        child: Wrap(
                           children: [
-                            Icon(Icons.login),
+                            Icon(
+                              Icons.login,
+                              size: 20,
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
                             Text("Log in with google")
                           ],
                         ),

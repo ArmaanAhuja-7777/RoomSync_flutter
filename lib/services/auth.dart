@@ -28,7 +28,11 @@ class AuthService {
           content: Text('Please Sign in with thapar.edu mail id'),
         ));
 
-        await GoogleSignIn().disconnect();
+        try {
+          await GoogleSignIn().disconnect();
+        } catch (e) {
+          return;
+        }
         return;
       }
 

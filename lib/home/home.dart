@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:room_automation/home/base_home.dart';
 import 'package:room_automation/login/ProfileScreen.dart';
 import 'package:room_automation/login/LoginScreen.dart';
 import 'package:room_automation/services/auth.dart';
+import 'package:room_automation/services/firestore.dart';
+import 'package:room_automation/shared/home_nav.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+  const HomeScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,10 +19,11 @@ class HomeScreen extends StatelessWidget {
         } else if (snapshot.hasError) {
           return Text("Error");
         } else if (snapshot.hasData) {
-          print(snapshot.data);
+          // print(snapshot.data);
           // user is logged in
           // check initial data of user if exists then permit
-          return ProfileScreen();
+          // redirectProfileCheck(context);
+          return HomeNav();
         } else {
           // user is logged out
           return const LoginScreen();
